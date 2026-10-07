@@ -34,9 +34,9 @@ export default function Collections() {
         {/* Title */}
         <div className="text-center mb-16">
           <span className="text-xs font-bold uppercase tracking-widest text-accent block mb-3">
-            CATALOG
+            FABRIC SOLUTIONS
           </span>
-          <h1 className="text-4xl md:text-5xl font-bold font-serif mb-6">Our Collections</h1>
+          <h1 className="text-4xl md:text-5xl font-bold font-serif mb-6">Fabric Catalog & Specializations</h1>
           <div className="h-[1px] w-20 bg-accent mx-auto"></div>
         </div>
 
@@ -76,7 +76,7 @@ export default function Collections() {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search garments..."
+              placeholder="Search fabrics..."
               className="w-full bg-bg-alt border border-border-theme pl-10 pr-4 py-2 text-xs uppercase tracking-widest outline-none focus:border-accent"
             />
           </div>
@@ -96,7 +96,7 @@ export default function Collections() {
         ) : (
           <div className="text-center py-20 border border-dashed border-border-theme">
             <p className="text-sm text-primary/60 uppercase tracking-widest">
-              No creations found matching the criteria.
+              No fabric items found matching the criteria.
             </p>
           </div>
         )}
@@ -142,19 +142,18 @@ export default function Collections() {
                     </h3>
                     <p className="text-xl font-bold mt-4 text-accent">{selectedProduct.price}</p>
                     <p className="text-xs text-primary/60 mt-4 leading-relaxed font-light">
-                      This signature garment represents slow fashion couture. Finished meticulously by our master artisans with highest-quality natural fabrics and exquisite detailing.
+                      Manufactured by Barani Clothings with modernized Dyeing, Sizing, and Weaving units. Tested at SITRA, SGS, and ITS.
                     </p>
                   </div>
                   <div className="flex flex-col gap-2 pt-6">
                     <button
                       onClick={() => {
                         setSelectedProduct(null);
-                        // programmatically scroll or direct to appt
-                        window.location.href = '#/appointment';
+                        window.location.href = '#/contact';
                       }}
                       className="bg-primary text-bg-base text-center text-xs font-bold uppercase tracking-widest py-3 hover:bg-accent hover:text-primary transition-colors"
                     >
-                      Bespoke Fitting Reservation
+                      Inquire For Bulk Production
                     </button>
                   </div>
                 </div>

@@ -1,14 +1,14 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { contactInfo } from '../../data/siteData';
-import { FiMail, FiMapPin, FiPhone, FiSend, FiClock } from 'react-icons/fi';
+import { FiMail, FiMapPin, FiPhone, FiSend, FiClock, FiExternalLink } from 'react-icons/fi';
 
 export default function Contact() {
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
   const onSubmit = (data) => {
     console.log('Contact Message:', data);
-    alert(`Thank you, ${data.name}! Your message was successfully sent.`);
+    alert(`Thank you, ${data.name}! Your message was successfully sent to Barani Clothings.`);
     reset();
   };
 
@@ -18,24 +18,26 @@ export default function Contact() {
         {/* Title */}
         <div className="text-center mb-16">
           <span className="text-xs font-bold uppercase tracking-widest text-accent block mb-3">GET IN TOUCH</span>
-          <h1 className="text-4xl md:text-5xl font-bold font-serif mb-6">Contact The Studio</h1>
+          <h1 className="text-4xl md:text-5xl font-bold font-serif mb-6">Contact Barani Clothings</h1>
           <div className="h-[1px] w-20 bg-accent mx-auto"></div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start mb-20">
           {/* Contact Details Column */}
           <div className="lg:col-span-4 flex flex-col gap-8">
-            <h2 className="text-2xl font-serif text-primary">Private Atelier</h2>
+            <h2 className="text-2xl font-serif text-primary">Registered Office</h2>
             <p className="text-sm text-primary/70 leading-relaxed font-light">
-              Connect with our concierge team to query ongoing orders, schedule private viewings, or learn about collections.
+              Connect with our management team for fabric inquiries, bulk manufacturing, yarn-dyed requirements, or custom dobby fabric developments.
             </p>
 
             <div className="flex flex-col gap-6 text-sm">
               <div className="flex items-start gap-4">
                 <FiMapPin className="text-accent w-5 h-5 shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-serif font-bold text-primary">Location</h4>
-                  <p className="text-primary/70 mt-1">{contactInfo.address}</p>
+                  <h4 className="font-serif font-bold text-primary">Office Address</h4>
+                  <a href={contactInfo.googleMapsUrl} target="_blank" rel="noreferrer" className="text-primary/70 hover:text-accent transition-colors block mt-1 leading-relaxed">
+                    {contactInfo.address}
+                  </a>
                 </div>
               </div>
 
@@ -62,7 +64,7 @@ export default function Contact() {
               <div className="flex items-start gap-4">
                 <FiClock className="text-accent w-5 h-5 shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-serif font-bold text-primary">Business Hours</h4>
+                  <h4 className="font-serif font-bold text-primary">Working Hours</h4>
                   <div className="flex flex-col gap-1 mt-1 text-xs text-primary/70">
                     {contactInfo.businessHours.map((h, i) => (
                       <p key={i}>
@@ -82,12 +84,12 @@ export default function Contact() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Name */}
                 <div className="flex flex-col gap-1">
-                  <label className="text-xs uppercase tracking-widest text-primary font-bold">Your Name</label>
+                  <label className="text-xs uppercase tracking-widest text-primary font-bold">Your Name / Company</label>
                   <input
                     type="text"
                     {...register("name", { required: "Name is required" })}
                     className="bg-bg-base border border-border-theme p-3 text-sm focus:border-accent outline-none w-full"
-                    placeholder="Enter name"
+                    placeholder="Enter full name"
                   />
                   {errors.name && <span className="text-red-500 text-xs">{errors.name.message}</span>}
                 </div>
@@ -112,7 +114,7 @@ export default function Contact() {
                   type="text"
                   {...register("subject", { required: "Subject is required" })}
                   className="bg-bg-base border border-border-theme p-3 text-sm focus:border-accent outline-none w-full"
-                  placeholder="How can we help you?"
+                  placeholder="Fabric Inquiry / Bulk Order / Custom Development"
                 />
                 {errors.subject && <span className="text-red-500 text-xs">{errors.subject.message}</span>}
               </div>
@@ -124,7 +126,7 @@ export default function Contact() {
                   rows="5"
                   {...register("message", { required: "Message content is required" })}
                   className="bg-bg-base border border-border-theme p-3 text-sm focus:border-accent outline-none w-full resize-none"
-                  placeholder="Write message here..."
+                  placeholder="Specify fabric type, required GSM (40-300 GSM), quantity, or timeline..."
                 />
                 {errors.message && <span className="text-red-500 text-xs">{errors.message.message}</span>}
               </div>
@@ -139,25 +141,22 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* Map Placeholder */}
+        {/* Map Section */}
         <div className="relative aspect-[21/9] w-full overflow-hidden border border-border-theme bg-bg-alt flex flex-col items-center justify-center p-8 text-center">
           <div className="bg-pattern absolute inset-0 opacity-10"></div>
-          <div className="relative z-10 max-w-md">
+          <div className="relative z-10 max-w-lg">
             <FiMapPin className="text-accent text-4xl mx-auto mb-4" />
-            <h3 className="font-serif text-2xl text-primary font-bold">Showroom Directions</h3>
-            <p className="text-xs text-primary/70 uppercase tracking-widest mt-2">
-              402 Designer Avenue, Fashion District, New York
-            </p>
-            <p className="text-xs text-primary/50 mt-4 leading-relaxed max-w-sm mx-auto">
-              Convenient private parking is available at the rear entrance of the atelier courtyard.
+            <h3 className="font-serif text-2xl text-primary font-bold">Facility Location</h3>
+            <p className="text-xs text-primary/70 uppercase tracking-widest mt-2 leading-relaxed">
+              Perundurai & Vijayamangalam, Erode, Tamil Nadu – 638053
             </p>
             <a
-              href="https://google.com/maps"
+              href={contactInfo.googleMapsUrl}
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-accent hover:text-primary transition-colors border-b border-accent pb-1 mt-6"
             >
-              Get Directions on Map ↗
+              Open Google Maps Location <FiExternalLink />
             </a>
           </div>
         </div>
@@ -165,3 +164,4 @@ export default function Contact() {
     </div>
   );
 }
+

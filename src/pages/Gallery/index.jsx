@@ -34,22 +34,22 @@ export default function Gallery() {
   };
 
   return (
-    <div className="py-16 bg-bg-base">
-      <div className="max-w-7xl mx-auto px-6">
+    <div className="py-12 md:py-16 bg-bg-base overflow-x-hidden w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full">
         {/* Title */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12 md:mb-16">
           <span className="text-xs font-bold uppercase tracking-widest text-accent block mb-3">GALLERY</span>
-          <h1 className="text-4xl md:text-5xl font-bold font-serif mb-6">Visual Portfolio</h1>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold font-serif mb-6">Facility & Production Gallery</h1>
           <div className="h-[1px] w-20 bg-accent mx-auto"></div>
         </div>
 
         {/* Category Tabs */}
-        <div className="flex flex-wrap gap-2 justify-center mb-12 pb-6 border-b border-border-theme">
+        <div className="flex flex-wrap gap-2 justify-center mb-10 pb-6 border-b border-border-theme w-full">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setFilter(cat)}
-              className={`px-5 py-2 text-xs font-bold uppercase tracking-widest border transition-all ${
+              className={`px-4 sm:px-5 py-2 text-xs font-bold uppercase tracking-widest border transition-all ${
                 filter === cat
                   ? 'bg-primary text-bg-base border-primary'
                   : 'bg-transparent text-primary border-border-theme hover:border-accent'
@@ -60,13 +60,13 @@ export default function Gallery() {
           ))}
         </div>
 
-        {/* Masonry-Style Grid */}
-        <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
+        {/* Responsive Grid: 1 col (mobile), 2 cols (tablet), 3 cols (desktop) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-full">
           {filteredItems.map((item, idx) => (
             <div
               key={item.id}
               onClick={() => openLightbox(idx)}
-              className="break-inside-avoid relative overflow-hidden group border border-border-theme cursor-pointer bg-bg-alt aspect-[3/4]"
+              className="w-full relative overflow-hidden group border border-border-theme cursor-pointer bg-bg-alt aspect-[4/3] sm:aspect-[3/4]"
             >
               <img
                 src={item.image}
@@ -94,11 +94,11 @@ export default function Gallery() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={closeLightbox}
-            className="fixed inset-0 z-50 bg-black/95 flex flex-col items-center justify-center p-4"
+            className="fixed inset-0 z-50 bg-black/95 flex flex-col items-center justify-center p-4 overflow-y-auto"
           >
             <button
               onClick={closeLightbox}
-              className="absolute top-6 right-6 text-white hover:text-accent p-2 text-2xl"
+              className="absolute top-6 right-6 text-white hover:text-accent p-2 text-2xl z-10"
               title="Close"
             >
               <FiX />
@@ -107,14 +107,14 @@ export default function Gallery() {
             {/* Prev Trigger */}
             <button
               onClick={showPrev}
-              className="absolute left-6 top-1/2 -translate-y-1/2 text-white hover:text-accent p-3 text-3xl hidden md:block"
+              className="absolute left-6 top-1/2 -translate-y-1/2 text-white hover:text-accent p-3 text-3xl hidden md:block z-10"
               title="Previous"
             >
               <FiChevronLeft />
             </button>
 
             {/* Active Image Box */}
-            <div className="max-w-4xl max-h-[80vh] flex flex-col items-center justify-center relative">
+            <div className="max-w-4xl max-h-[80vh] flex flex-col items-center justify-center relative w-full px-2">
               <motion.img
                 key={lightboxIndex}
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -136,7 +136,7 @@ export default function Gallery() {
             {/* Next Trigger */}
             <button
               onClick={showNext}
-              className="absolute right-6 top-1/2 -translate-y-1/2 text-white hover:text-accent p-3 text-3xl hidden md:block"
+              className="absolute right-6 top-1/2 -translate-y-1/2 text-white hover:text-accent p-3 text-3xl hidden md:block z-10"
               title="Next"
             >
               <FiChevronRight />

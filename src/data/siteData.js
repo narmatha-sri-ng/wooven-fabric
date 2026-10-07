@@ -1,368 +1,282 @@
-// Data configuration for the Boutique & Fashion Studio Website Template
-// Designed for ease of customization and commercial reuse.
-
-export const siteThemes = [
-  { id: 'theme-a', name: 'Luxury Boutique', desc: 'Classic Gold & Dark Slate', colors: ['#111111', '#C9A86A', '#FFFFFF'] },
-  { id: 'theme-b', name: 'Modern Fashion', desc: 'Warm Mauve & Soft Blush', colors: ['#9b42a7ff', '#F5E6E8', '#FFFFFF'] },
-  { id: 'theme-c', name: 'Elegant Boutique', desc: 'Rich Espresso & Warm Almond', colors: ['#5C4033', '#EADBC8', '#FFFFFF'] },
-  { id: 'theme-d', name: 'Minimal Fashion', desc: 'Clean Charcoal & Amber Gold', colors: ['#1E1E1E', '#F7F7F7', '#D4AF37'] },
-];
+// Data configuration for Barani Clothings Private Limited Website
+// Woven fabric manufacturing leader established in 1992.
 
 export const navigationLinks = [
   { name: 'Home', path: '/' },
   { name: 'About', path: '/about' },
   { name: 'Collections', path: '/collections' },
-  { name: 'Lookbook', path: '/lookbook' },
   { name: 'Gallery', path: '/gallery' },
-  { name: 'Appointment', path: '/appointment' },
-  { name: 'Contact', path: '/contact' }
+  { name: 'Appointment', path: '/appointment' }
 ];
+
+export const companyDetails = {
+  name: 'BARANI CLOTHINGS PRIVATE LIMITED',
+  shortName: 'BARANI CLOTHINGS',
+  tagline: 'WOVEN FABRIC SOLUTIONS & INTEGRATED MANUFACTURING',
+  establishedYear: '1992',
+  logo: '/logo.png',
+  fabricRange: '40 GSM to 300 GSM',
+  overview: 'Established in 1992, Barani Clothings Private Limited has been a pioneering force in the textile industry, dedicated to delivering high-quality fabric solutions. With a commitment to excellence, we engage in the manufacturing of woven fabrics, supported by in-house facilities for Dyeing, Sizing, and Weaving. Our modernized machinery ensures the highest quality at every step of the production process. Strategically located in Vijayamangalam and Perundurai, our facilities stand as beacons of innovation and efficiency.'
+};
 
 export const heroSlides = [
   {
-    image: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1920&auto=format&fit=crop',
-    title: 'Fashion Designed Around Your Style',
-    subtitle: 'Explore timeless collections crafted to celebrate confidence, elegance, and individuality.',
-    tagline: 'HAUTE COUTURE 2026',
-    imageName: 'hero-fashion-01.jpg'
+    image: 'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?q=80&w=1920&auto=format&fit=crop',
+    title: 'Pioneering Woven Fabric Solutions Since 1992',
+    subtitle: 'High-quality fabric manufacturing backed by modernized in-house Dyeing, Sizing, and Weaving units in Vijayamangalam & Perundurai.',
+    tagline: 'ESTABLISHED 1992',
+    imageName: 'hero-weaving-01.jpg'
   },
   {
-    image: 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=1920&auto=format&fit=crop',
-    title: 'Curated Elegance for Every Occasion',
-    subtitle: 'Step into bespoke styles tailormade for life’s most celebrated moments.',
-    tagline: 'PREMIUM DESIGNER WEAR',
-    imageName: 'hero-fashion-02.jpg'
+    image: 'https://images.unsplash.com/photo-1604176354204-9268737828e4?q=80&w=1920&auto=format&fit=crop',
+    title: 'Integrated Textile Excellence & Quality Control',
+    subtitle: 'Specialized in solid-dyed and yarn-dyed woven fabrics ranging from 40 GSM to 300 GSM engineered for premium apparel manufacturing.',
+    tagline: '40 GSM - 300 GSM FABRICS',
+    imageName: 'hero-weaving-02.jpg'
   }
 ];
 
 export const featuredCollections = [
   {
-    id: 'bridal',
-    title: 'Bridal Collection',
-    image: 'https://images.unsplash.com/photo-1594552072238-b8a33785b261?q=80&w=800&auto=format&fit=crop',
-    tag: 'Bespoke Bridal',
-    desc: 'Luxurious silhouettes and intricate details crafted for your unforgettable day.',
-    imageName: 'collection-01.jpg'
+    id: 'cotton',
+    title: 'Cotton (BCI & Organic)',
+    image: 'https://images.unsplash.com/photo-1604176354204-9268737828e4?q=80&w=800&auto=format&fit=crop',
+    tag: 'Sustainable Cotton',
+    desc: 'BCI and Organic cotton woven fabrics engineered for premium apparel.',
+    imageName: 'category-01.jpg'
   },
   {
-    id: 'festive',
-    title: 'Festive Wear',
-    image: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop',
-    tag: 'Vibrant Celebrations',
-    desc: 'Celebrate traditions with contemporary grace and rich, elegant color palettes.',
-    imageName: 'collection-02.jpg'
+    id: 'cellulosic',
+    title: 'Viscose / Rayon / Modal / Lyocell',
+    image: 'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?q=80&w=800&auto=format&fit=crop',
+    tag: 'Cellulosic Fabrics',
+    desc: 'Soft, breathable cellulosic fiber weaves and blended fabric options.',
+    imageName: 'category-02.jpg'
   },
   {
-    id: 'saree',
-    title: 'Designer Sarees',
-    image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop',
-    tag: 'Timeless Heritage',
-    desc: 'Exquisite handwoven fabrics paired with modern embroidery designs.',
-    imageName: 'collection-03.jpg'
+    id: 'melange',
+    title: 'Melanges & Slubs',
+    image: 'https://images.unsplash.com/photo-1528458876861-544fd1761a91?q=80&w=800&auto=format&fit=crop',
+    tag: 'Textured Yarns',
+    desc: 'Distinctive melange and slub yarn weaves providing rich aesthetic textures.',
+    imageName: 'category-03.jpg'
   },
   {
-    id: 'casual',
-    title: 'Casual Wear',
-    image: 'https://images.unsplash.com/photo-1485968579580-b6d095142e6e?q=80&w=800&auto=format&fit=crop',
-    tag: 'Daily Luxe',
-    desc: 'Effortless styles combining absolute comfort with minimal modern aesthetics.',
-    imageName: 'collection-04.jpg'
+    id: 'yarn-dyed',
+    title: 'Cotton / Flax Yarn-Dyed Fabrics',
+    image: 'https://images.unsplash.com/photo-1596783074918-c84cb06531ca?q=80&w=800&auto=format&fit=crop',
+    tag: 'Yarn-Dyed Weaves',
+    desc: 'Precision yarn-dyed checks, stripes, and linen/flax blended fabrics.',
+    imageName: 'category-04.jpg'
   },
   {
-    id: 'kids',
-    title: 'Kids Collection',
-    image: 'https://images.unsplash.com/photo-1622290291468-a28f7a7dc6a8?q=80&w=800&auto=format&fit=crop',
-    tag: 'Young Fashionistas',
-    desc: 'Delightful styles and soft, organic premium fabrics for little ones.',
-    imageName: 'collection-05.jpg'
-  },
-  {
-    id: 'exclusive',
-    title: 'Exclusive Arrivals',
+    id: 'prints-crinkle',
+    title: 'Printed & Crinkle Fabrics',
     image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop',
-    tag: 'Limited Edition',
-    desc: 'Handpicked premium designs released in extremely limited quantities.',
-    imageName: 'collection-06.jpg'
+    tag: 'Specialty Finishes',
+    desc: 'Vibrant printed woven fabrics and high-twist crinkle rayon blends.',
+    imageName: 'category-05.jpg'
+  },
+  {
+    id: 'dobby-special',
+    title: 'Dobby & Speciality Weaves',
+    image: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=800&auto=format&fit=crop',
+    tag: 'Intricate Dobby',
+    desc: 'Engineered dobby patterns, double cloth, and 3-layer structural fabrics.',
+    imageName: 'category-06.jpg'
   }
 ];
 
 export const newArrivals = [
   {
     id: 1,
-    title: 'Asymmetrical Silk Draped Gown',
-    category: 'Bridal Wear',
-    price: '$1,250',
-    image: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?q=80&w=600&auto=format&fit=crop',
-    tag: 'New'
+    title: 'Plain Weave Woven Fabric',
+    category: 'Fabric Constructions',
+    price: '40 - 300 GSM',
+    image: 'https://images.unsplash.com/photo-1604176354204-9268737828e4?q=80&w=600&auto=format&fit=crop',
+    tag: 'Construction'
   },
   {
     id: 2,
-    title: 'Metallic Thread Brocade Lehenga',
-    category: 'Festive Wear',
-    price: '$890',
-    image: 'https://images.unsplash.com/photo-1618244972963-dbee1a7edc95?q=80&w=600&auto=format&fit=crop',
-    tag: 'Trending'
+    title: 'Twill Weave Fabric',
+    category: 'Fabric Constructions',
+    price: 'Solid & Yarn-Dyed',
+    image: 'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?q=80&w=600&auto=format&fit=crop',
+    tag: 'Construction'
   },
   {
     id: 3,
-    title: 'Organza Saree with Pearl Borders',
-    category: 'Designer Sarees',
-    price: '$450',
-    image: 'https://images.unsplash.com/photo-1596783074918-c84cb06531ca?q=80&w=600&auto=format&fit=crop',
-    tag: 'Bestseller'
+    title: 'Herringbone & Chambray Weaves',
+    category: 'Fabric Constructions',
+    price: 'Premium Weave',
+    image: 'https://images.unsplash.com/photo-1528458876861-544fd1761a91?q=80&w=600&auto=format&fit=crop',
+    tag: 'Construction'
   },
   {
     id: 4,
-    title: 'Linen Blend Oversized Utility Blazer',
-    category: 'Casual Wear',
-    price: '$210',
-    image: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=600&auto=format&fit=crop',
-    tag: 'Minimal'
+    title: 'Dobby & Satin Fabrics',
+    category: 'Specializations',
+    price: 'Structured Weave',
+    image: 'https://images.unsplash.com/photo-1596783074918-c84cb06531ca?q=80&w=600&auto=format&fit=crop',
+    tag: 'Specialization'
   },
   {
     id: 5,
-    title: 'Classic Ivory Lace Ceremony Dress',
-    category: 'Kids Collection',
-    price: '$180',
-    image: 'https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?q=80&w=600&auto=format&fit=crop',
-    tag: 'New'
+    title: 'Double Cloth / 3-Layer Cloth',
+    category: 'Specializations',
+    price: 'Multi-Layer',
+    image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=600&auto=format&fit=crop',
+    tag: 'Specialization'
   },
   {
     id: 6,
-    title: 'Monochromatic Structured Corset Suit',
-    category: 'Exclusive Arrivals',
-    price: '$680',
+    title: 'Sustainable & Recycled Fabrics',
+    category: 'Specializations',
+    price: 'BCI / Organic',
     image: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=600&auto=format&fit=crop',
-    tag: 'Exclusive'
+    tag: 'Sustainable'
   }
 ];
 
 export const whyChooseUs = [
   {
-    title: 'Personal Styling',
-    desc: 'Enjoy individual sessions with our fashion consultants to craft your signature look.'
+    title: 'Rigorous 4-Point Quality Inspection',
+    desc: 'Mandatory fabric inspection after weaving and finishing conducted across every weaving center.'
   },
   {
-    title: 'Custom Designs',
-    desc: 'From initial sketches to final stitches, bring your specific fashion ideas to life.'
+    title: 'Standardized Testing Benchmark',
+    desc: 'Fabrics tested at SITRA, SGS, and ITS to guarantee international quality standard compliance.'
   },
   {
-    title: 'Premium Fabrics',
-    desc: 'We source only the finest silks, linens, organzas, and organic cottons worldwide.'
+    title: 'In-House Dyeing Excellence',
+    desc: '900 MT/year capacity supported by beaker dyeing labs and double dyeing specializations.'
   },
   {
-    title: 'Exclusive Collections',
-    desc: 'Gain first access to micro-runs and capsule designs not available anywhere else.'
+    title: 'Advanced Sizing Infrastructure',
+    desc: 'Prashant LASERTRONIC warping & West Point PLC sizing delivering 20 lakh meters per month.'
   },
   {
-    title: 'Fashion Expertise',
-    desc: 'Over a decade of industry expertise guiding pattern cuts, drapes, and tailoring.'
+    title: 'High-Capacity Weaving Unit',
+    desc: '72 Picanol Rapier & Air Jet looms + affiliated network of 150+ machines yielding 3.75 lakh meters/month.'
   },
   {
-    title: 'Attention To Detail',
-    desc: 'Hand-finished hems, custom buttons, and carefully inspected embroidery work.'
+    title: 'Integrated Manufacturing Ecosystem',
+    desc: 'End-to-end control from yarn preparation to finished fabric ensures dependable bulk execution.'
   }
 ];
 
 export const trendingEditorial = {
-  subtitle: 'Season Edit',
-  title: 'The Contemporary Nomad',
-  desc: 'A gorgeous juxtaposition of structured modern tailoring and lightweight floating drapery. Engineered for the modern tastemaker who values both form and function.',
-  quote: 'Fashion is not something that exists in dresses only. Fashion is in the sky, in the street.',
-  imageLeft: 'https://images.unsplash.com/photo-1496449903678-c8dd735014ba?q=80&w=800&auto=format&fit=crop',
-  imageRight: 'https://images.unsplash.com/photo-1509319117193-57bab727e09d?q=80&w=800&auto=format&fit=crop'
+  subtitle: 'Manufacturing Infrastructure',
+  title: 'Fully Integrated Modernized Facilities',
+  desc: 'Located strategically in Vijayamangalam and Perundurai, our facilities feature automated Picanol looms, laser warping, PLC sizing, and specialized double-dyeing divisions.',
+  quote: 'Engaged in manufacturing high-quality woven fabrics with unmatched precision and consistent color accuracy since 1992.',
+  imageLeft: 'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?q=80&w=800&auto=format&fit=crop',
+  imageRight: 'https://images.unsplash.com/photo-1604176354204-9268737828e4?q=80&w=800&auto=format&fit=crop'
 };
 
 export const fashionProcessSteps = [
   {
     step: '01',
-    title: 'Consultation',
-    desc: 'Meet our lead designers to share your vision, preferences, measurements, and stylistic goals.'
+    title: 'Sample Development & Dyeing',
+    desc: 'Dedicated lab with sample and beaker dyeing machines for precision color consistency and double dyeing.'
   },
   {
     step: '02',
-    title: 'Design Selection',
-    desc: 'Review custom sketches, reference fabrics, color swatches, and choose the direction you love.'
+    title: 'Warping & PLC Sizing',
+    desc: 'Prashant LASERTRONIC warping and West Point PLC sizing ensuring superior yarn strength and smooth weaving.'
   },
   {
     step: '03',
-    title: 'Customization',
-    desc: 'Our master tailors draft unique paper patterns tailored specifically to your body measurements.'
+    title: 'Rapier & Air Jet Weaving',
+    desc: 'Operating 72 Picanol looms and 150+ affiliated machines delivering 3.75 lakh meters per month.'
   },
   {
     step: '04',
-    title: 'Finishing',
-    desc: 'Hand-sewn detailing, lining fits, button installations, and rigorous quality checkovers.'
+    title: '4-Point Quality Inspection',
+    desc: 'Rigorous 4-point inspection system enforced post-weaving and post-finishing across all centers.'
   },
   {
     step: '05',
-    title: 'Delivery',
-    desc: 'A final custom fitting, secure premium packaging, and delivery directly to your wardrobe.'
+    title: 'Certified Testing & Dispatch',
+    desc: 'Final fabric testing at SITRA, SGS, and ITS ensuring international benchmarks prior to delivery.'
   }
 ];
 
 export const statisticsData = [
-  { count: 10, label: 'Years Experience', suffix: '+' },
-  { count: 5000, label: 'Happy Customers', suffix: '+' },
-  { count: 1000, label: 'Design Collections', suffix: '+' },
-  { count: 50, label: 'Fashion Events', suffix: '+' }
+  { count: 1992, label: 'Established Year', suffix: '' },
+  { count: 900, label: 'Dyeing MT / Year', suffix: ' MT' },
+  { count: 20, label: 'Sizing Lakh Meters / Mo', suffix: 'L Mtr' },
+  { count: 72, label: 'Picanol Looms', suffix: ' Looms' }
 ];
 
-export const testimonialsList = [
-  {
-    id: 1,
-    name: 'Alexandra K.',
-    role: 'Bridal Client',
-    rating: 5,
-    comment: 'The bridal customization process was absolutely dreamlike. They listened to every tiny request and delivered a masterwork gown.',
-    image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=300&auto=format&fit=crop',
-    imageName: 'testimonial-01.jpg'
-  },
-  {
-    id: 2,
-    name: 'Marcus V.',
-    role: 'Bespoke Suit Client',
-    rating: 5,
-    comment: 'Supreme fabric quality and unparalleled tailoring accuracy. Easily outperforms luxury department store brands on every level.',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=300&auto=format&fit=crop',
-    imageName: 'testimonial-02.jpg'
-  },
-  {
-    id: 3,
-    name: 'Priya M.',
-    role: 'Ethnic Wear Enthusiast',
-    rating: 5,
-    comment: 'The designer sarees are timeless pieces of art. The blend of silk and organza feels incredibly premium and drapes like a dream.',
-    image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=300&auto=format&fit=crop',
-    imageName: 'testimonial-03.jpg'
-  }
-];
+export const testimonialsList = [];
 
 export const galleryItems = [
   {
     id: 1,
-    category: 'Bridal',
-    title: 'The Silk Ceremony',
-    image: 'https://images.unsplash.com/photo-1594552072238-b8a33785b261?q=80&w=800&auto=format&fit=crop',
-    imageName: 'gallery-01.jpg'
+    category: 'Weaving Unit',
+    title: 'Picanol Rapier & Air Jet Looms Shed',
+    image: 'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?q=80&w=800&auto=format&fit=crop',
+    imageName: 'facility-01.jpg'
   },
   {
     id: 2,
-    category: 'Festive',
-    title: 'Jeweled Tones Gala',
-    image: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop',
-    imageName: 'gallery-02.jpg'
+    category: 'Dyeing Unit',
+    title: 'Sample & Beaker Dyeing Division',
+    image: 'https://images.unsplash.com/photo-1528458876861-544fd1761a91?q=80&w=800&auto=format&fit=crop',
+    imageName: 'facility-02.jpg'
   },
   {
     id: 3,
-    category: 'Editorial',
-    title: 'Structured Shadows',
-    image: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=800&auto=format&fit=crop',
-    imageName: 'gallery-03.jpg'
+    category: 'Sizing Unit',
+    title: 'Prashant LASERTRONIC Warping Machine',
+    image: 'https://images.unsplash.com/photo-1604176354204-9268737828e4?q=80&w=800&auto=format&fit=crop',
+    imageName: 'facility-03.jpg'
   },
   {
     id: 4,
-    category: 'Minimal',
-    title: 'Urban Comfort Edit',
-    image: 'https://images.unsplash.com/photo-1485968579580-b6d095142e6e?q=80&w=800&auto=format&fit=crop',
-    imageName: 'gallery-04.jpg'
+    category: 'Quality Control',
+    title: '4-Point Quality Fabric Inspection',
+    image: 'https://images.unsplash.com/photo-1596783074918-c84cb06531ca?q=80&w=800&auto=format&fit=crop',
+    imageName: 'facility-04.jpg'
   },
   {
     id: 5,
-    category: 'Bridal',
-    title: 'Floral Applique Detail',
-    image: 'https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?q=80&w=800&auto=format&fit=crop',
-    imageName: 'gallery-05.jpg'
+    category: 'Fabric Range',
+    title: 'Yarn-Dyed Checks & Dobby Weaves',
+    image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop',
+    imageName: 'facility-05.jpg'
   },
   {
     id: 6,
-    category: 'Editorial',
-    title: 'Crimson Velvet Silhouette',
+    category: 'Fabric Range',
+    title: 'Sustainable BCI & Organic Cotton',
     image: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=800&auto=format&fit=crop',
-    imageName: 'gallery-06.jpg'
-  }
-];
-
-export const lookbookLooks = [
-  {
-    season: 'Autumn / Winter 2026',
-    title: 'Chiaroscuro Silhouette',
-    subtitle: 'Look 01',
-    desc: 'Heavy structured wool coat accompanied by cascading georgette skirts and metallic details.',
-    image: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=800&auto=format&fit=crop'
-  },
-  {
-    season: 'Autumn / Winter 2026',
-    title: 'Gilded Amber Drapes',
-    subtitle: 'Look 02',
-    desc: 'Rich amber-colored pleated organza shirt layered over structured linen-blend trousers.',
-    image: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=800&auto=format&fit=crop'
-  },
-  {
-    season: 'Spring / Summer 2026',
-    title: 'Ethereal Monochromatic',
-    subtitle: 'Look 03',
-    desc: 'Feather-light mulberry silk gown with hand-sewn glass bead details along the neckline.',
-    image: 'https://images.unsplash.com/photo-1594552072238-b8a33785b261?q=80&w=800&auto=format&fit=crop'
-  },
-  {
-    season: 'Spring / Summer 2026',
-    title: 'Earthbound Linen Suit',
-    subtitle: 'Look 04',
-    desc: 'Warm beige double-breasted jacket paired with raw silk trousers for a laid-back corporate vibe.',
-    image: 'https://images.unsplash.com/photo-1485968579580-b6d095142e6e?q=80&w=800&auto=format&fit=crop'
+    imageName: 'facility-06.jpg'
   }
 ];
 
 export const aboutContent = {
-  mission: 'To create bespoke fashion experiences that honor tradition while championing sustainable modern craftsmanship.',
-  vision: 'To become the premier platform for capsule styles and customizable designer wardrobes globally.',
-  philosophy: 'We believe that clothing is a medium of silent self-expression. Every garment we construct is engineered to build confidence and celebrate the unique posture of its wearer.',
-  story: 'Founded with a dedication to fine fabrics and slow production lines, our studio has expanded from a local atelier into a modern digital label. Yet, our focus remains unchanged: delivering unparalleled quality for clients who refuse to settle for the average.',
-  team: [
-    { name: 'Elena Rostova', role: 'Head Designer', image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=300&auto=format&fit=crop' },
-    { name: 'Hiroshi Tanaka', role: 'Master Tailor', image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=300&auto=format&fit=crop' },
-    { name: 'Siddharth Roy', role: 'Embroidery Specialist', image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=300&auto=format&fit=crop' }
-  ],
-  achievements: [
-    { year: '2018', title: 'Atelier Founded', desc: 'Opened our doors with just a single tailors bench and five rolls of Italian linen.' },
-    { year: '2021', title: 'Sustainable Label Award', desc: 'Honored for our circular supply chain and Zero Waste pattern cutting process.' },
-    { year: '2024', title: 'Global Showcase Debut', desc: 'Featured in our first independent runway show focusing on luxury custom wear.' }
-  ]
+  mission: 'To deliver high-quality woven fabric solutions through integrated manufacturing, advanced machinery, skilled expertise, and consistent quality control, while meeting the requirements of premium apparel manufacturers with dependable production and timely delivery.',
+  vision: 'To be a trusted textile manufacturing partner for premium woven fabric solutions, continuously developing innovative, sustainable, and high-quality fabrics for evolving apparel requirements.',
+  philosophy: 'We are committed to maintaining consistent fabric quality through rigorous inspection, controlled manufacturing processes, advanced machinery, skilled professionals, and standardized testing. From dyeing and sizing to weaving and finishing, we focus on quality, precision, and dependable production for every order.',
+  story: 'Established in 1992, Barani Clothings Private Limited has been a pioneering force in the textile industry, dedicated to delivering high-quality fabric solutions. With a commitment to excellence, we engage in the manufacturing of woven fabrics, supported by in-house facilities for Dyeing, Sizing, and Weaving. Our modernized machinery ensures the highest quality at every step of the production process. Strategically located in Vijayamangalam and Perundurai, our facilities stand as beacons of innovation and efficiency.',
+  dyeingUnit: 'Our dyeing division has an in-house capacity of 900 metric tons per year and is equipped with sample dyeing and beaker dyeing machines for precision sample development. Supported by a dedicated dyeing laboratory, we ensure enhanced quality control and exceptional color consistency, with specialization in double dyeing processes. Through collaboration with trusted partner dyeing units, we can scale production to handle up to 1,200 metric tons per year, enabling dependable execution for large-volume requirements.',
+  sizingUnit: 'Equipped with modern Prashant LASERTRONIC warping and direct warping machines along with the advanced Prashant-West Point PLC sizing machine, our sizing unit delivers up to 20 lakh meters per month, ensuring superior yarn strength, smooth weaving performance, precision control, and consistent fabric quality.',
+  weavingUnit: 'Our weaving facility operates 72 Rapier and Air Jet looms of Picanol make, managed by over 100 skilled professionals in the loom shed. Leveraging a network of affiliated units with more than 150 weaving machines, we ensure scalable production flexibility and dependable bulk-order execution. With a production capacity of 3.75 lakh meters per month, we specialize in premium dobby fabrics and check designs engineered for precision and consistency.',
+  qualityAssurance: 'We follow a rigorous 4-point fabric quality inspection system at every weaving center, with mandatory fabric inspection after weaving and finishing. Our fabrics are further tested at standardized testing centers such as SITRA, SGS, and ITS to ensure compliance with international quality benchmarks.\n\nPowered by advanced machinery and an experienced workforce, our fully integrated manufacturing ecosystem ensures exceptional quality control, production efficiency, and timely delivery for every order.'
 };
 
-export const faqItems = [
-  {
-    question: 'How do custom measurements work?',
-    answer: 'You can book an appointment online, and during the consultation, we take comprehensive measurements. If you are ordering remotely, our stylists will guide you through a video call to capture precise metrics.'
-  },
-  {
-    question: 'What is the average timeline for custom designs?',
-    answer: 'Standard custom-tailored apparel requires 3 to 6 weeks, which includes fitting sessions, hand-finishing, and final quality checks.'
-  },
-  {
-    question: 'Can I choose my own fabrics?',
-    answer: 'Absolutely. We hold a curated library of premium silks, linens, wools, and organic cottons. You are welcome to browse and select your favorite texture and color during design selection.'
-  },
-  {
-    question: 'Do you offer international shipping?',
-    answer: 'Yes, we securely package and ship our custom and collection orders worldwide with tracked express carriers.'
-  }
-];
 
 export const contactInfo = {
-  phone: '+1 (800) 456-7890',
-  email: 'concierge@fashionstudio.com',
-  address: '402 Designer Avenue, Fashion District, NY 10018',
+  phone: '+91 9042712569',
+  email: 'bcpl@baranifabrics.com',
+  address: 'BARANI CLOTHINGS PRIVATE LIMITED, 30/20 ST 1, Kunnathur Road Extn, Thiruvengadampalayam Pudur, Thingalur Road, Perundurai, Erode, Tamil Nadu – 638053',
+  googleMapsUrl: 'https://maps.app.goo.gl/YMY26bdQ1iHaZNrMA?g_st=aw',
   businessHours: [
-    { days: 'Monday - Friday', hours: '10:00 AM - 7:00 PM' },
-    { days: 'Saturday', hours: '11:00 AM - 6:00 PM' },
-    { days: 'Sunday', hours: 'By Appointment Only' }
+    { days: 'Monday - Saturday', hours: '9:00 AM - 6:00 PM' },
+    { days: 'Sunday', hours: 'Closed' }
   ],
-  socials: [
-    { name: 'Instagram', url: 'https://instagram.com' },
-    { name: 'Pinterest', url: 'https://pinterest.com' },
-    { name: 'Facebook', url: 'https://facebook.com' },
-    { name: 'Twitter', url: 'https://twitter.com' }
-  ]
+  socials: []
 };
+

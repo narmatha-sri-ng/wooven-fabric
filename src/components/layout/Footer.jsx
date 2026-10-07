@@ -14,30 +14,39 @@ export const Footer = () => {
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
         {/* Brand Column */}
         <div className="flex flex-col gap-4">
-          <Link to="/" className="flex flex-col text-bg-base font-serif">
-            <span className="text-2xl font-bold tracking-widest leading-none">STUDIO</span>
-            <span className="text-[9px] tracking-[0.35em] uppercase text-accent font-sans font-medium mt-1">
-              HAUTE COUTURE
-            </span>
+          <Link to="/" className="flex items-center gap-3 select-none">
+            <img
+              src="/logo.png"
+              alt="Barani Clothings Private Limited Logo"
+              className="h-10 w-auto object-contain bg-white px-2 py-1 rounded"
+            />
+            <div className="flex flex-col text-bg-base font-serif">
+              <span className="text-lg font-bold tracking-widest leading-none">BARANI CLOTHINGS</span>
+              <span className="text-[8px] tracking-[0.25em] uppercase text-accent font-sans font-medium mt-1">
+                PRIVATE LIMITED
+              </span>
+            </div>
           </Link>
           <p className="text-gray-400 text-sm mt-4 leading-relaxed">
-            Thoughtfully curated designs blending modern elements with heritage craftsmanship to celebrate your personal identity.
+            Pioneering force in the textile industry since 1992. Dedicated to delivering high-quality woven fabric solutions with modernized in-house Dyeing, Sizing, and Weaving facilities.
           </p>
-          <div className="flex gap-4 mt-6">
-            {contactInfo.socials.map((social) => (
-              <a
-                key={social.name}
-                href={social.url}
-                target="_blank"
-                rel="noreferrer"
-                className="text-gray-400 hover:text-accent transition-colors text-lg"
-                title={social.name}
-              >
-                {social.name === 'Instagram' && <FiInstagram />}
-                {social.name !== 'Instagram' && <span className="text-xs uppercase font-bold tracking-wider">{social.name.substring(0, 2)}</span>}
-              </a>
-            ))}
-          </div>
+          {contactInfo.socials.length > 0 && (
+            <div className="flex gap-4 mt-6">
+              {contactInfo.socials.map((social) => (
+                <a
+                  key={social.name}
+                  href={social.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-gray-400 hover:text-accent transition-colors text-lg"
+                  title={social.name}
+                >
+                  {social.name === 'Instagram' && <FiInstagram />}
+                  {social.name !== 'Instagram' && <span className="text-xs uppercase font-bold tracking-wider">{social.name.substring(0, 2)}</span>}
+                </a>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Quick Navigation Links */}
@@ -59,7 +68,7 @@ export const Footer = () => {
 
         {/* Collections Shortcut */}
         <div>
-          <h4 className="text-accent font-serif text-lg mb-6">Collections</h4>
+          <h4 className="text-accent font-serif text-lg mb-6">Fabric Categories</h4>
           <ul className="flex flex-col gap-3">
             {featuredCollections.slice(0, 4).map((col) => (
               <li key={col.id}>
@@ -76,10 +85,12 @@ export const Footer = () => {
 
         {/* Contact Info & Hours */}
         <div className="flex flex-col gap-4 text-sm">
-          <h4 className="text-accent font-serif text-lg mb-2">Private Studio</h4>
+          <h4 className="text-accent font-serif text-lg mb-2">Registered Office</h4>
           <p className="flex items-start gap-3 text-gray-400">
             <FiMapPin className="w-5 h-5 text-accent shrink-0 mt-0.5" />
-            <span>{contactInfo.address}</span>
+            <a href={contactInfo.googleMapsUrl} target="_blank" rel="noreferrer" className="hover:text-bg-base transition-colors">
+              {contactInfo.address}
+            </a>
           </p>
           <p className="flex items-center gap-3 text-gray-400">
             <FiPhone className="w-5 h-5 text-accent" />
@@ -96,17 +107,17 @@ export const Footer = () => {
 
           <form onSubmit={handleSubmit} className="mt-4">
             <label className="text-xs uppercase tracking-widest text-accent font-bold block mb-2">
-              Join The Club
+              Inquire With Us
             </label>
             <div className="flex border-b border-gray-600 pb-1">
               <input
                 type="email"
                 required
-                placeholder="Email address"
+                placeholder="Business email address"
                 className="bg-transparent border-none outline-none text-bg-base placeholder-gray-500 w-full text-sm py-1"
               />
               <button type="submit" className="text-accent hover:text-bg-base transition-colors px-2">
-                Join
+                Submit
               </button>
             </div>
           </form>
@@ -115,8 +126,8 @@ export const Footer = () => {
 
       {/* Copyright */}
       <div className="max-w-7xl mx-auto px-6 border-t border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-gray-500">
-        <p>© 2026 Fashion Studio. All rights reserved.</p>
-        <p className="mt-2 md:mt-0">Premium Commercial Template</p>
+        <p>© {new Date().getFullYear()} Barani Clothings Private Limited. All rights reserved.</p>
+        <p className="mt-2 md:mt-0">Woven Fabric Manufacturing Leader</p>
       </div>
     </footer>
   );

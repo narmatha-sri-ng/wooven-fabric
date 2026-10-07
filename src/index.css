@@ -14,46 +14,12 @@
 }
 
 :root {
-  /* Default: Theme A - Luxury Boutique */
   --primary: #111111;
   --accent: #C9A86A;
   --accent-light: #F4EAD4;
   --dark: #111111;
   --bg-base: #FFFFFF;
   --bg-alt: #FAFAFA;
-  --border-theme: #E5E5E5;
-}
-
-[data-theme="theme-b"] {
-  /* Theme B: Modern Fashion */
-  --primary: #8B5E83;
-  --accent: #A36A95;
-  --accent-light: #F5E6E8;
-  --dark: #351C2F;
-  --bg-base: #FFFFFF;
-  --bg-alt: #FAF6F7;
-  --border-theme: #EAD2D6;
-}
-
-[data-theme="theme-c"] {
-  /* Theme C: Elegant Boutique */
-  --primary: #5C4033;
-  --accent: #A68A64;
-  --accent-light: #EADBC8;
-  --dark: #32221A;
-  --bg-base: #FFFFFF;
-  --bg-alt: #FDFBF7;
-  --border-theme: #E6D8C9;
-}
-
-[data-theme="theme-d"] {
-  /* Theme D: Minimal Fashion */
-  --primary: #1E1E1E;
-  --accent: #D4AF37;
-  --accent-light: #F7F7F7;
-  --dark: #121212;
-  --bg-base: #FFFFFF;
-  --bg-alt: #F4F4F4;
   --border-theme: #E5E5E5;
 }
 
@@ -72,21 +38,6 @@ h1, h2, h3, h4, h5, h6, .font-serif {
 /* Custom Swiper Styles */
 .swiper-pagination-bullet-active {
   background: var(--accent) !important;
-}
-
-/* Custom scrollbar and aesthetics */
-::-webkit-scrollbar {
-  width: 5px;
-}
-::-webkit-scrollbar-track {
-  background: var(--bg-alt);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--accent);
-  border-radius: 2px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--primary);
 }
 
 /* Smooth transition utility */
