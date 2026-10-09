@@ -4,19 +4,19 @@ import { useForm } from 'react-hook-form';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay, EffectFade } from 'swiper/modules';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { 
-  FiArrowRight, FiCheck, FiCalendar, FiUser, FiPhone, FiMail, 
-  FiMessageSquare, FiStar, FiInstagram, FiExternalLink 
+import {
+  FiArrowRight, FiCheck, FiCalendar, FiUser, FiPhone, FiMail,
+  FiMessageSquare, FiStar, FiInstagram, FiExternalLink
 } from 'react-icons/fi';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 
-import { 
-  heroSlides, featuredCollections, newArrivals, whyChooseUs, 
-  trendingEditorial, fashionProcessSteps, statisticsData, 
-  testimonialsList, galleryItems, contactInfo, companyDetails 
+import {
+  heroSlides, featuredCollections, newArrivals, whyChooseUs,
+  trendingEditorial, fashionProcessSteps, statisticsData,
+  testimonialsList, galleryItems, contactInfo, companyDetails
 } from '../../data/siteData';
 import { AnimatedSection } from '../../components/common/AnimatedSection';
 import { ProductCard } from '../../components/cards/ProductCard';
@@ -29,11 +29,11 @@ const Counter = ({ value, duration = 1.5 }) => {
     let start = 0;
     const end = value;
     if (start === end) return;
-    
+
     // calculate increment time
     const totalMiliseconds = duration * 1000;
     const increment = Math.ceil(end / (totalMiliseconds / 16)); // ~60fps
-    
+
     let timer = setInterval(() => {
       start += increment;
       if (start >= end) {
@@ -43,7 +43,7 @@ const Counter = ({ value, duration = 1.5 }) => {
         setCount(start);
       }
     }, 16);
-    
+
     return () => clearInterval(timer);
   }, [value, duration]);
 
@@ -64,7 +64,7 @@ export default function Home() {
 
   return (
     <div>
-      
+
       {/* SECTION 1: Hero */}
       <section className="relative min-h-[550px] lg:h-[calc(100vh-80px)] flex items-center justify-center bg-primary text-bg-base overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
@@ -79,10 +79,10 @@ export default function Home() {
               <SwiperSlide key={idx} className="relative h-full w-full">
                 {/* Image overlay to darken slightly */}
                 <div className="absolute inset-0 bg-primary/40 z-10" />
-                <img 
-                  src={slide.image} 
-                  alt={slide.title} 
-                  className="w-full h-full object-cover" 
+                <img
+                  src={slide.image}
+                  alt={slide.title}
+                  className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 z-20 flex items-center">
                   <div className="max-w-7xl mx-auto px-6 w-full py-12">
@@ -97,14 +97,14 @@ export default function Home() {
                         {slide.subtitle}
                       </p>
                       <div className="flex flex-wrap gap-4">
-                        <Link 
-                          to="/collections" 
+                        <Link
+                          to="/collections"
                           className="bg-accent text-primary px-8 py-4 font-bold text-xs uppercase tracking-widest hover:bg-bg-base hover:text-primary transition-all duration-300"
                         >
                           Explore Fabric Range
                         </Link>
-                        <Link 
-                          to="/contact" 
+                        <Link
+                          to="/contact"
                           className="border border-bg-base text-bg-base px-8 py-4 font-bold text-xs uppercase tracking-widest hover:bg-bg-base hover:text-primary transition-all duration-300"
                         >
                           Contact Us
@@ -131,10 +131,10 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredCollections.map((col, idx) => (
               <AnimatedSection key={col.id} delay={idx * 0.1} className="group relative overflow-hidden aspect-[4/5] bg-bg-alt border border-border-theme">
-                <img 
-                  src={col.image} 
-                  alt={col.title} 
-                  className="h-full w-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105" 
+                <img
+                  src={col.image}
+                  alt={col.title}
+                  className="h-full w-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent flex flex-col justify-end p-8 text-bg-base">
                   <span className="text-[10px] font-bold tracking-widest uppercase text-accent mb-2">
@@ -142,8 +142,8 @@ export default function Home() {
                   </span>
                   <h3 className="text-2xl font-serif mb-2">{col.title}</h3>
                   <p className="text-xs text-gray-300 font-light mb-4 line-clamp-2">{col.desc}</p>
-                  <Link 
-                    to={`/collections?cat=${col.title}`} 
+                  <Link
+                    to={`/collections?cat=${col.title}`}
                     className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-accent hover:text-bg-base transition-colors"
                   >
                     View Details <FiArrowRight />
@@ -160,9 +160,9 @@ export default function Home() {
         <div className="bg-pattern absolute inset-0"></div>
         <div className="max-w-7xl mx-auto px-6 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           <div className="lg:col-span-6 overflow-hidden aspect-[4/5] md:aspect-[3/2] lg:aspect-[4/5] border border-border-theme">
-            <img 
-              src="https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?q=80&w=800&auto=format&fit=crop" 
-              alt="Barani Clothings Manufacturing Facility" 
+            <img
+              src="https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?q=80&w=800&auto=format&fit=crop"
+              alt="Barani Clothings Manufacturing Facility"
               className="w-full h-full object-cover"
             />
           </div>
@@ -179,8 +179,8 @@ export default function Home() {
               Specialized in solid-dyed and yarn-dyed woven fabric solutions ranging from 40 GSM to 300 GSM engineered for premium apparel manufacturing globally.
             </p>
             <div className="pt-4">
-              <Link 
-                to="/about" 
+              <Link
+                to="/about"
                 className="bg-primary text-bg-base px-8 py-4 font-bold text-xs uppercase tracking-widest hover:bg-accent hover:text-primary transition-all"
               >
                 Learn More About Us
@@ -198,8 +198,8 @@ export default function Home() {
               <span className="text-xs font-bold uppercase tracking-widest text-accent block mb-3">Fabric Range</span>
               <h2 className="text-3xl md:text-4xl font-bold font-serif">Constructions & Specializations</h2>
             </div>
-            <Link 
-              to="/collections" 
+            <Link
+              to="/collections"
               className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-accent hover:text-primary transition-colors border-b border-accent pb-1 mt-4 md:mt-0"
             >
               See All Specifications <FiArrowRight />
@@ -208,9 +208,9 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {newArrivals.map((product) => (
-              <ProductCard 
-                key={product.id} 
-                product={product} 
+              <ProductCard
+                key={product.id}
+                product={product}
                 onViewDetails={(prod) => setSelectedProduct(prod)}
               />
             ))}
@@ -254,8 +254,8 @@ export default function Home() {
                 "{trendingEditorial.quote}"
               </div>
               <div>
-                <Link 
-                  to="/about" 
+                <Link
+                  to="/about"
                   className="inline-flex items-center gap-3 text-xs font-bold uppercase tracking-widest border border-primary px-8 py-4 hover:bg-primary hover:text-bg-base transition-all"
                 >
                   Explore Infrastructure <FiArrowRight />
@@ -322,8 +322,8 @@ export default function Home() {
               <span className="text-xs font-bold uppercase tracking-widest text-accent block mb-3">FACILITIES & FABRICS</span>
               <h2 className="text-3xl md:text-4xl font-bold font-serif">Facility Gallery</h2>
             </div>
-            <Link 
-              to="/gallery" 
+            <Link
+              to="/gallery"
               className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-accent hover:text-primary transition-colors mt-4 md:mt-0"
             >
               View Full Gallery <FiArrowRight />
@@ -362,8 +362,8 @@ export default function Home() {
                 <label className="text-xs uppercase tracking-widest text-primary font-bold flex items-center gap-2">
                   <FiUser className="text-accent" /> Full Name / Company Name
                 </label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   {...register("name", { required: "Name is required" })}
                   className="bg-bg-base border border-border-theme p-3 text-sm focus:border-accent outline-none w-full"
                   placeholder="Enter full name"
@@ -376,8 +376,8 @@ export default function Home() {
                 <label className="text-xs uppercase tracking-widest text-primary font-bold flex items-center gap-2">
                   <FiPhone className="text-accent" /> Phone Number
                 </label>
-                <input 
-                  type="tel" 
+                <input
+                  type="tel"
                   {...register("phone", { required: "Phone is required" })}
                   className="bg-bg-base border border-border-theme p-3 text-sm focus:border-accent outline-none w-full"
                   placeholder="Enter phone number"
@@ -392,8 +392,8 @@ export default function Home() {
                 <label className="text-xs uppercase tracking-widest text-primary font-bold flex items-center gap-2">
                   <FiMail className="text-accent" /> Email Address
                 </label>
-                <input 
-                  type="email" 
+                <input
+                  type="email"
                   {...register("email", { required: "Email is required" })}
                   className="bg-bg-base border border-border-theme p-3 text-sm focus:border-accent outline-none w-full"
                   placeholder="Enter business email"
@@ -406,7 +406,7 @@ export default function Home() {
                 <label className="text-xs uppercase tracking-widest text-primary font-bold flex items-center gap-2">
                   <FiCalendar className="text-accent" /> Fabric Category
                 </label>
-                <select 
+                <select
                   {...register("collection")}
                   className="bg-bg-base border border-border-theme p-3 text-sm focus:border-accent outline-none w-full"
                 >
@@ -425,7 +425,7 @@ export default function Home() {
               <label className="text-xs uppercase tracking-widest text-primary font-bold flex items-center gap-2">
                 <FiMessageSquare className="text-accent" /> Fabric Specifications & Enquiries
               </label>
-              <textarea 
+              <textarea
                 rows="4"
                 {...register("message")}
                 className="bg-bg-base border border-border-theme p-3 text-sm focus:border-accent outline-none w-full resize-none"
@@ -433,7 +433,7 @@ export default function Home() {
               />
             </div>
 
-            <button 
+            <button
               type="submit"
               className="bg-primary text-bg-base font-bold text-xs uppercase tracking-widest py-4 border border-primary hover:bg-accent hover:text-primary transition-all mt-4"
             >
@@ -453,8 +453,8 @@ export default function Home() {
             High-quality fabric solutions backed by modernized Dyeing, Sizing, and Weaving units in Perundurai and Vijayamangalam.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link 
-              to="/collections" 
+            <Link
+              to="/collections"
               className="bg-accent text-primary px-8 py-4 font-bold text-xs uppercase tracking-widest hover:bg-bg-base hover:text-primary transition-all duration-300"
             >
               Explore Collections
@@ -467,8 +467,8 @@ export default function Home() {
       {selectedProduct && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
           <div className="bg-bg-base border border-border-theme max-w-xl w-full p-8 relative shadow-2xl">
-            <button 
-              onClick={() => setSelectedProduct(null)} 
+            <button
+              onClick={() => setSelectedProduct(null)}
               className="absolute top-4 right-4 text-primary hover:text-accent font-bold text-lg"
             >
               ✕
@@ -487,11 +487,11 @@ export default function Home() {
                   </p>
                 </div>
                 <div className="flex flex-col gap-2 pt-6">
-                  <Link 
-                    to="/contact" 
+                  <Link
+                    to="/contact"
                     className="bg-primary text-bg-base text-center text-xs font-bold uppercase tracking-widest py-3 hover:bg-accent hover:text-primary transition-colors"
                   >
-                    Inquire For Bulk Orders
+                    ENQUIRE FOR BULK ORDERS
                   </Link>
                 </div>
               </div>
