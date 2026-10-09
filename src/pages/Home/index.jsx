@@ -54,8 +54,8 @@ export default function Home() {
   // Form Setup
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
   const onFormSubmit = (data) => {
-    console.log('Inquiry Data:', data);
-    alert(`Thank you, ${data.name}! Your inquiry for ${data.collection} has been received. Our team will contact you shortly.`);
+    console.log('Enquiry Data:', data);
+    alert(`Thank you, ${data.name}! Your enquiry for ${data.collection} has been received. Our team will contact you shortly.`);
     reset();
   };
 
@@ -287,7 +287,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
             {fashionProcessSteps.map((step, idx) => (
               <AnimatedSection key={idx} delay={idx * 0.1} className="relative flex flex-col gap-4 bg-bg-base p-8 border border-border-theme shadow-sm">
-                <div className="text-4xl font-serif text-accent/30 font-bold leading-none">{step.step}</div>
+                <div className="text-4xl font-serif text-accent font-black leading-none drop-shadow-sm">{step.step}</div>
                 <h3 className="text-lg font-serif font-bold text-primary mt-2">{step.title}</h3>
                 <p className="text-xs text-primary/60 leading-relaxed font-light">{step.desc}</p>
               </AnimatedSection>
@@ -344,11 +344,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 11: Submit Inquiry / Request Quote */}
+      {/* SECTION 11: Submit Enquiry / Request Quote */}
       <section id="consultation" className="py-24 bg-bg-base">
         <div className="max-w-4xl mx-auto px-6">
           <div className="text-center mb-16">
-            <span className="text-xs font-bold uppercase tracking-widest text-accent block mb-3">BUSINESS INQUIRY</span>
+            <span className="text-xs font-bold uppercase tracking-widest text-accent block mb-3">BUSINESS ENQUIRY</span>
             <h2 className="text-3xl md:text-4xl font-serif">Request Fabric Specification & Quote</h2>
             <p className="text-sm text-primary/60 max-w-md mx-auto mt-4">
               Get in touch with our team for bulk fabric production, yarn-dyed requirements, or custom dobby weaves.
@@ -423,7 +423,7 @@ export default function Home() {
             {/* Message */}
             <div className="flex flex-col gap-1">
               <label className="text-xs uppercase tracking-widest text-primary font-bold flex items-center gap-2">
-                <FiMessageSquare className="text-accent" /> Fabric Specifications & Inquiries
+                <FiMessageSquare className="text-accent" /> Fabric Specifications & Enquiries
               </label>
               <textarea 
                 rows="4"
@@ -437,7 +437,7 @@ export default function Home() {
               type="submit"
               className="bg-primary text-bg-base font-bold text-xs uppercase tracking-widest py-4 border border-primary hover:bg-accent hover:text-primary transition-all mt-4"
             >
-              Submit Business Inquiry
+              Submit Business Enquiry
             </button>
           </form>
         </div>

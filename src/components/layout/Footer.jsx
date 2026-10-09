@@ -1,12 +1,64 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { contactInfo, navigationLinks, featuredCollections } from '../../data/siteData';
-import { FiInstagram, FiMail, FiMapPin, FiPhone } from 'react-icons/fi';
+import { FiInstagram, FiMail, FiMapPin, FiPhone, FiAlertCircle, FiCheckCircle } from 'react-icons/fi';
 
 export const Footer = () => {
+  const [emailValue, setEmailValue] = useState('');
+  const [error, setError] = useState('');
+  const [statusMsg, setStatusMsg] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const validateEmail = (val) => {
+    const trimmed = val.trim();
+    if (!trimmed) {
+      return 'Please enter a valid email address.';
+    }
+    // Syntactically valid RFC 5322 email regex allowing numeric usernames (e.g. 4657678@gmail.com)
+    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!regex.test(trimmed)) {
+      return 'Please enter a valid email address.';
+    }
+    return '';
+  };
+
+  const handleEmailChange = (e) => {
+    const val = e.target.value;
+    setEmailValue(val);
+    if (error) {
+      const err = validateEmail(val);
+      if (!err) setError('');
+    }
+  };
+
+  const handleBlur = () => {
+    if (emailValue) {
+      setError(validateEmail(emailValue));
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert('Thank you for subscribing to our private mailing list.');
+    if (isSubmitting) return;
+
+    const validationErr = validateEmail(emailValue);
+    if (validationErr) {
+      setError(validationErr);
+      setStatusMsg(null);
+      return;
+    }
+
+    setError('');
+    setIsSubmitting(true);
+
+    // Simulate submission delay and display honest status message (no backend/mailing service configured)
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setStatusMsg({
+        type: 'info',
+        text: 'Syntax check passed. Online subscription service is unconfigured. Please email bcpl@baranifabrics.com for direct enquiries.'
+      });
+    }, 600);
   };
 
   return (
@@ -18,7 +70,7 @@ export const Footer = () => {
             <img
               src="/logo.png"
               alt="Barani Clothings Private Limited Logo"
-              className="h-10 w-auto object-contain bg-white px-2 py-1 rounded"
+              className="h-14 sm:h-16 w-auto object-contain"
             />
             <div className="flex flex-col text-bg-base font-serif">
               <span className="text-lg font-bold tracking-widest leading-none">BARANI CLOTHINGS</span>
@@ -105,21 +157,42 @@ export const Footer = () => {
             </a>
           </p>
 
-          <form onSubmit={handleSubmit} className="mt-4">
-            <label className="text-xs uppercase tracking-widest text-accent font-bold block mb-2">
-              Inquire With Us
+          <form onSubmit={handleSubmit} noValidate className="mt-4 flex flex-col gap-1">
+            <label htmlFor="footer-email" className="text-xs uppercase tracking-widest text-accent font-bold block mb-1">
+              ENQUIRY WITH US
             </label>
-            <div className="flex border-b border-gray-600 pb-1">
+            <div className={`flex border-b pb-1 transition-colors ${error ? 'border-red-500' : 'border-gray-600 focus-within:border-accent'}`}>
               <input
+                id="footer-email"
+                name="email"
                 type="email"
                 required
+                value={emailValue}
+                onChange={handleEmailChange}
+                onBlur={handleBlur}
+                aria-invalid={error ? 'true' : 'false'}
+                aria-describedby={error ? 'footer-email-error' : undefined}
                 placeholder="Business email address"
                 className="bg-transparent border-none outline-none text-bg-base placeholder-gray-500 w-full text-sm py-1"
               />
-              <button type="submit" className="text-accent hover:text-bg-base transition-colors px-2">
-                Submit
+              <button 
+                type="submit" 
+                disabled={isSubmitting}
+                className="text-accent hover:text-bg-base transition-colors px-2 font-bold text-xs uppercase tracking-widest disabled:opacity-50 disabled:cursor-not-allowed shrink-0"
+              >
+                {isSubmitting ? 'Submitting...' : 'Submit'}
               </button>
             </div>
+            {error && (
+              <span id="footer-email-error" className="text-red-400 text-xs mt-1 flex items-center gap-1">
+                <FiAlertCircle className="shrink-0" /> {error}
+              </span>
+            )}
+            {statusMsg && (
+              <div className="mt-2 text-xs p-2 bg-gray-900 border border-gray-700 text-gray-300 rounded leading-relaxed">
+                {statusMsg.text}
+              </div>
+            )}
           </form>
         </div>
       </div>

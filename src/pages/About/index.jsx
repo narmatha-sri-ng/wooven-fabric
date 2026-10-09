@@ -83,6 +83,13 @@ export default function About() {
           <AnimatedSection delay={0.2} className="bg-bg-alt border border-border-theme p-8 flex flex-col gap-4">
             <FiCheckCircle className="text-accent text-2xl" />
             <h3 className="font-serif text-xl font-bold text-primary">Sizing Unit</h3>
+            <div className="grid grid-cols-2 gap-2 my-2 overflow-hidden rounded">
+              {aboutContent.sizingImages?.map((img, idx) => (
+                <div key={idx} className="aspect-[4/3] overflow-hidden border border-border-theme/40">
+                  <img src={img} alt={`Sizing Unit ${idx + 1}`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                </div>
+              ))}
+            </div>
             <p className="text-xs text-primary/70 leading-relaxed font-light">
               {sizingUnit}
             </p>
@@ -91,6 +98,13 @@ export default function About() {
           <AnimatedSection delay={0.3} className="bg-bg-alt border border-border-theme p-8 flex flex-col gap-4">
             <FiCheckCircle className="text-accent text-2xl" />
             <h3 className="font-serif text-xl font-bold text-primary">Weaving Unit</h3>
+            <div className="grid grid-cols-2 gap-2 my-2 overflow-hidden rounded">
+              {aboutContent.weavingImages?.map((img, idx) => (
+                <div key={idx} className="aspect-[4/3] overflow-hidden border border-border-theme/40">
+                  <img src={img} alt={`Weaving Unit ${idx + 1}`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                </div>
+              ))}
+            </div>
             <p className="text-xs text-primary/70 leading-relaxed font-light">
               {weavingUnit}
             </p>

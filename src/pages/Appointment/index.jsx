@@ -1,15 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { contactInfo } from '../../data/siteData';
+import { contactInfo, featuredCollections } from '../../data/siteData';
 import { AnimatedSection } from '../../components/common/AnimatedSection';
-import { FiCalendar, FiClock, FiShield, FiUser, FiMail, FiPhone, FiMessageSquare } from 'react-icons/fi';
+import { FiCalendar, FiDroplet, FiShield, FiUser, FiMail, FiPhone, FiMessageSquare, FiCheckCircle } from 'react-icons/fi';
 
 export default function Appointment() {
-  const { register, handleSubmit, formState: { errors }, reset } = useForm();
+  const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm();
+  const [submittedMessage, setSubmittedMessage] = useState(null);
   
-  const onSubmit = (data) => {
-    console.log('Booking Data:', data);
-    alert(`Thank you, ${data.name}! Your fabric inquiry for ${data.collection} has been received.`);
+  // Calculate today's date in YYYY-MM-DD format to disable previous dates
+  const todayDate = new Date().toISOString().split('T')[0];
+
+  const onSubmit = async (data) => {
+    // Trim whitespace
+    const cleanData = {
+      name: data.name.trim(),
+      phone: data.phone.trim(),
+      email: data.email.trim(),
+      collection: data.collection,
+      date: data.date,
+      message: data.message.trim()
+    };
+    console.log('Booking Data:', cleanData);
+    setSubmittedMessage(`Your fabric production enquiry has been submitted successfully.`);
     reset();
   };
 
@@ -18,7 +31,7 @@ export default function Appointment() {
       <div className="max-w-7xl mx-auto px-6">
         {/* Title */}
         <div className="text-center mb-16">
-          <span className="text-xs font-bold uppercase tracking-widest text-accent block mb-3">INQUIRY & CONSULTATION</span>
+          <span className="text-xs font-bold uppercase tracking-widest text-accent block mb-3">ENQUIRY & CONSULTATION</span>
           <h1 className="text-4xl md:text-5xl font-bold font-serif mb-6">Request Fabric Consultation</h1>
           <div className="h-[1px] w-20 bg-accent mx-auto"></div>
         </div>
@@ -26,103 +39,172 @@ export default function Appointment() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
           {/* Form container */}
           <div className="lg:col-span-7 bg-bg-alt border border-border-theme p-8 md:p-12 shadow-sm">
-            <h2 className="text-2xl font-serif mb-6 text-primary">Fabric Production Query</h2>
-            <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
+            <h2 className="text-2xl font-serif mb-6 text-primary">Fabric Production Enquiry</h2>
+            
+            {submittedMessage && (
+              <div className="mb-6 p-5 bg-accent/10 border border-accent text-primary text-sm flex items-center justify-between gap-4 rounded shadow-sm">
+                <div className="flex items-center gap-3">
+                  <FiCheckCircle className="text-accent text-2xl shrink-0" />
+                  <span className="font-medium">{submittedMessage}</span>
+                </div>
+                <button 
+                  onClick={() => setSubmittedMessage(null)}
+                  className="text-xs uppercase tracking-widest font-bold text-accent hover:underline shrink-0"
+                >
+                  Dismiss
+                </button>
+              </div>
+            )}
+
+            <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6" noValidate>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Name */}
                 <div className="flex flex-col gap-1">
-                  <label className="text-xs uppercase tracking-widest text-primary font-bold flex items-center gap-2">
-                    <FiUser className="text-accent" /> Full Name / Company Name
+                  <label htmlFor="appointment-name" className="text-xs uppercase tracking-widest text-primary font-bold flex items-center gap-2">
+                    <FiUser className="text-accent" /> Your Name / Company Name <span className="text-red-500">*</span>
                   </label>
                   <input
+                    id="appointment-name"
                     type="text"
-                    {...register("name", { required: "Name is required" })}
-                    className="bg-bg-base border border-border-theme p-3 text-sm focus:border-accent outline-none w-full"
+                    aria-invalid={errors.name ? "true" : "false"}
+                    aria-describedby={errors.name ? "name-error" : undefined}
+                    {...register("name", { 
+                      required: "Your Name / Company Name is required",
+                      validate: (val) => val.trim().length > 0 || "Whitespace-only values are not allowed",
+                      minLength: {
+                        value: 2,
+                        message: "Name must be at least 2 characters long"
+                      },
+                      pattern: {
+                        value: /^[a-zA-Z0-9\s.,&'-]+$/,
+                        message: "Please enter a valid name or company name"
+                      }
+                    })}
+                    className={`bg-bg-base border p-3 text-sm focus:border-accent outline-none w-full ${errors.name ? 'border-red-500' : 'border-border-theme'}`}
                     placeholder="Enter full name"
                   />
-                  {errors.name && <span className="text-red-500 text-xs">{errors.name.message}</span>}
+                  {errors.name && <span id="name-error" className="text-red-500 text-xs mt-1">{errors.name.message}</span>}
                 </div>
 
                 {/* Phone */}
                 <div className="flex flex-col gap-1">
-                  <label className="text-xs uppercase tracking-widest text-primary font-bold flex items-center gap-2">
-                    <FiPhone className="text-accent" /> Phone Number
+                  <label htmlFor="appointment-phone" className="text-xs uppercase tracking-widest text-primary font-bold flex items-center gap-2">
+                    <FiPhone className="text-accent" /> Phone Number <span className="text-red-500">*</span>
                   </label>
                   <input
+                    id="appointment-phone"
                     type="tel"
-                    {...register("phone", { required: "Phone is required" })}
-                    className="bg-bg-base border border-border-theme p-3 text-sm focus:border-accent outline-none w-full"
-                    placeholder="+91 9042712569"
+                    aria-invalid={errors.phone ? "true" : "false"}
+                    aria-describedby={errors.phone ? "phone-error" : undefined}
+                    {...register("phone", { 
+                      required: "Phone Number is required",
+                      validate: (val) => val.trim().length > 0 || "Whitespace-only values are not allowed",
+                      pattern: {
+                        value: /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s./0-9]*$/,
+                        message: "Please enter a valid phone number"
+                      }
+                    })}
+                    className={`bg-bg-base border p-3 text-sm focus:border-accent outline-none w-full ${errors.phone ? 'border-red-500' : 'border-border-theme'}`}
+                    placeholder="Enter phone number"
                   />
-                  {errors.phone && <span className="text-red-500 text-xs">{errors.phone.message}</span>}
+                  {errors.phone && <span id="phone-error" className="text-red-500 text-xs mt-1">{errors.phone.message}</span>}
                 </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Email */}
                 <div className="flex flex-col gap-1">
-                  <label className="text-xs uppercase tracking-widest text-primary font-bold flex items-center gap-2">
-                    <FiMail className="text-accent" /> Email Address
+                  <label htmlFor="appointment-email" className="text-xs uppercase tracking-widest text-primary font-bold flex items-center gap-2">
+                    <FiMail className="text-accent" /> Email Address <span className="text-red-500">*</span>
                   </label>
                   <input
+                    id="appointment-email"
                     type="email"
-                    {...register("email", { required: "Email is required" })}
-                    className="bg-bg-base border border-border-theme p-3 text-sm focus:border-accent outline-none w-full"
-                    placeholder="bcpl@baranifabrics.com"
+                    aria-invalid={errors.email ? "true" : "false"}
+                    aria-describedby={errors.email ? "email-error" : undefined}
+                    {...register("email", { 
+                      required: "Email Address is required",
+                      validate: (val) => val.trim().length > 0 || "Whitespace-only values are not allowed",
+                      pattern: {
+                        value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                        message: "Please enter a valid email address"
+                      }
+                    })}
+                    className={`bg-bg-base border p-3 text-sm focus:border-accent outline-none w-full ${errors.email ? 'border-red-500' : 'border-border-theme'}`}
+                    placeholder="name@company.com"
                   />
-                  {errors.email && <span className="text-red-500 text-xs">{errors.email.message}</span>}
+                  {errors.email && <span id="email-error" className="text-red-500 text-xs mt-1">{errors.email.message}</span>}
                 </div>
 
                 {/* Preferred Category */}
                 <div className="flex flex-col gap-1">
-                  <label className="text-xs uppercase tracking-widest text-primary font-bold flex items-center gap-2">
-                    <FiCalendar className="text-accent" /> Fabric Category
+                  <label htmlFor="appointment-category" className="text-xs uppercase tracking-widest text-primary font-bold flex items-center gap-2">
+                    <FiCalendar className="text-accent" /> Fabric Category <span className="text-red-500">*</span>
                   </label>
                   <select
-                    {...register("collection")}
-                    className="bg-bg-base border border-border-theme p-3 text-sm focus:border-accent outline-none w-full"
+                    id="appointment-category"
+                    aria-invalid={errors.collection ? "true" : "false"}
+                    aria-describedby={errors.collection ? "category-error" : undefined}
+                    {...register("collection", { required: "Please select a fabric category" })}
+                    className={`bg-bg-base border p-3 text-sm focus:border-accent outline-none w-full ${errors.collection ? 'border-red-500' : 'border-border-theme'}`}
                   >
-                    <option value="Cotton (BCI & Organic)">Cotton (BCI & Organic)</option>
-                    <option value="Viscose / Rayon / Modal / Lyocell">Viscose / Rayon / Modal / Lyocell</option>
-                    <option value="Melanges & Slubs">Melanges & Slubs</option>
-                    <option value="Cotton / Flax Yarn-Dyed Fabrics">Cotton / Flax Yarn-Dyed Fabrics</option>
-                    <option value="Printed & Crinkle Fabrics">Printed & Crinkle Fabrics</option>
-                    <option value="Dobby & Speciality Weaves">Dobby & Speciality Weaves</option>
+                    <option value="">Select Fabric Category</option>
+                    {featuredCollections.map((col) => (
+                      <option key={col.id} value={col.title}>{col.title}</option>
+                    ))}
                   </select>
+                  {errors.collection && <span id="category-error" className="text-red-500 text-xs mt-1">{errors.collection.message}</span>}
                 </div>
               </div>
 
-              {/* Date */}
+              {/* Date with Past Dates Disabled */}
               <div className="flex flex-col gap-1">
-                <label className="text-xs uppercase tracking-widest text-primary font-bold flex items-center gap-2">
-                  <FiCalendar className="text-accent" /> Preferred Inquiry Date
+                <label htmlFor="appointment-date" className="text-xs uppercase tracking-widest text-primary font-bold flex items-center gap-2">
+                  <FiCalendar className="text-accent" /> Preferred Enquiry Date <span className="text-red-500">*</span>
                 </label>
                 <input
+                  id="appointment-date"
                   type="date"
-                  {...register("date", { required: "Date selection is required" })}
-                  className="bg-bg-base border border-border-theme p-3 text-sm focus:border-accent outline-none w-full"
+                  min={todayDate}
+                  aria-invalid={errors.date ? "true" : "false"}
+                  aria-describedby={errors.date ? "date-error" : undefined}
+                  {...register("date", { required: "Please select a valid future or current enquiry date" })}
+                  className={`bg-bg-base border p-3 text-sm focus:border-accent outline-none w-full ${errors.date ? 'border-red-500' : 'border-border-theme'}`}
                 />
-                {errors.date && <span className="text-red-500 text-xs">{errors.date.message}</span>}
+                {errors.date && <span id="date-error" className="text-red-500 text-xs mt-1">{errors.date.message}</span>}
               </div>
 
               {/* Message */}
               <div className="flex flex-col gap-1">
-                <label className="text-xs uppercase tracking-widest text-primary font-bold flex items-center gap-2">
-                  <FiMessageSquare className="text-accent" /> Specifications & Order Details
+                <label htmlFor="appointment-message" className="text-xs uppercase tracking-widest text-primary font-bold flex items-center gap-2">
+                  <FiMessageSquare className="text-accent" /> Specifications & Order Details <span className="text-red-500">*</span>
                 </label>
                 <textarea
+                  id="appointment-message"
                   rows="4"
-                  {...register("message")}
-                  className="bg-bg-base border border-border-theme p-3 text-sm focus:border-accent outline-none w-full resize-none"
+                  maxLength={1000}
+                  aria-invalid={errors.message ? "true" : "false"}
+                  aria-describedby={errors.message ? "message-error" : undefined}
+                  {...register("message", { 
+                    required: "Specifications & Order Details are required",
+                    validate: (val) => val.trim().length > 0 || "Whitespace-only values are not allowed",
+                    maxLength: {
+                      value: 1000,
+                      message: "Message cannot exceed 1000 characters"
+                    }
+                  })}
+                  className={`bg-bg-base border p-3 text-sm focus:border-accent outline-none w-full resize-none ${errors.message ? 'border-red-500' : 'border-border-theme'}`}
                   placeholder="Specify fabric weave, required GSM (40 to 300 GSM), quantity in meters, or finishing instructions..."
                 />
+                {errors.message && <span id="message-error" className="text-red-500 text-xs mt-1">{errors.message.message}</span>}
               </div>
 
               <button
                 type="submit"
-                className="bg-primary text-bg-base font-bold text-xs uppercase tracking-widest py-4 border border-primary hover:bg-accent hover:text-primary transition-all mt-4"
+                disabled={isSubmitting}
+                className="bg-primary text-bg-base font-bold text-xs uppercase tracking-widest py-4 border border-primary hover:bg-accent hover:text-primary transition-all mt-4 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Submit Specification Inquiry
+                {isSubmitting ? "Submitting..." : "Submit Fabric Enquiry"}
               </button>
             </form>
           </div>
@@ -134,7 +216,7 @@ export default function Appointment() {
               <h3 className="font-serif text-xl font-bold text-primary">Manufacturing & Consultation</h3>
               <ul className="flex flex-col gap-4 text-sm">
                 <li className="flex gap-4">
-                  <FiClock className="text-accent w-5 h-5 shrink-0 mt-0.5" />
+                  <FiDroplet className="text-accent w-5 h-5 shrink-0 mt-0.5" />
                   <div>
                     <h4 className="font-bold font-serif text-sm">Sample Development</h4>
                     <p className="text-xs text-primary/70 mt-1">

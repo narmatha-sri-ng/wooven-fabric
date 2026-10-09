@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { contactInfo } from '../../data/siteData';
-import { FiMail, FiMapPin, FiPhone, FiSend, FiClock, FiExternalLink } from 'react-icons/fi';
+import { FiMail, FiMapPin, FiPhone, FiSend, FiClock, FiExternalLink, FiCheckCircle } from 'react-icons/fi';
 
 export default function Contact() {
-  const { register, handleSubmit, formState: { errors }, reset } = useForm();
+  const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm();
+  const [submittedMessage, setSubmittedMessage] = useState(null);
 
-  const onSubmit = (data) => {
-    console.log('Contact Message:', data);
-    alert(`Thank you, ${data.name}! Your message was successfully sent to Barani Clothings.`);
+  const onSubmit = async (data) => {
+    const cleanData = {
+      name: data.name.trim(),
+      email: data.email.trim(),
+      subject: data.subject.trim(),
+      message: data.message.trim()
+    };
+    console.log('Contact Message:', cleanData);
+    setSubmittedMessage('Your message has been submitted successfully.');
     reset();
   };
 
@@ -44,7 +51,7 @@ export default function Contact() {
               <div className="flex items-start gap-4">
                 <FiPhone className="text-accent w-5 h-5 shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-serif font-bold text-primary">Phone</h4>
+                  <h4 className="font-serif font-bold text-primary">Phone Number</h4>
                   <a href={`tel:${contactInfo.phone}`} className="text-primary/70 hover:text-accent transition-colors block mt-1">
                     {contactInfo.phone}
                   </a>
@@ -54,7 +61,7 @@ export default function Contact() {
               <div className="flex items-start gap-4">
                 <FiMail className="text-accent w-5 h-5 shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-serif font-bold text-primary">Email</h4>
+                  <h4 className="font-serif font-bold text-primary">Email Address</h4>
                   <a href={`mailto:${contactInfo.email}`} className="text-primary/70 hover:text-accent transition-colors block mt-1">
                     {contactInfo.email}
                   </a>
@@ -79,63 +86,121 @@ export default function Contact() {
 
           {/* Contact Form Column */}
           <div className="lg:col-span-8 bg-bg-alt border border-border-theme p-8 md:p-12 shadow-sm">
-            <h2 className="text-2xl font-serif mb-6 text-primary">Send A Message</h2>
-            <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
+            <h2 className="text-2xl font-serif mb-6 text-primary">Send a Message</h2>
+            
+            {submittedMessage && (
+              <div className="mb-6 p-5 bg-accent/10 border border-accent text-primary text-sm flex items-center justify-between gap-4 rounded shadow-sm">
+                <div className="flex items-center gap-3">
+                  <FiCheckCircle className="text-accent text-2xl shrink-0" />
+                  <span className="font-medium">{submittedMessage}</span>
+                </div>
+                <button 
+                  onClick={() => setSubmittedMessage(null)}
+                  className="text-xs uppercase tracking-widest font-bold text-accent hover:underline shrink-0"
+                >
+                  Dismiss
+                </button>
+              </div>
+            )}
+
+            <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6" noValidate>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Name */}
                 <div className="flex flex-col gap-1">
-                  <label className="text-xs uppercase tracking-widest text-primary font-bold">Your Name / Company</label>
+                  <label htmlFor="contact-name" className="text-xs uppercase tracking-widest text-primary font-bold">Your Name / Company Name <span className="text-red-500">*</span></label>
                   <input
+                    id="contact-name"
                     type="text"
-                    {...register("name", { required: "Name is required" })}
-                    className="bg-bg-base border border-border-theme p-3 text-sm focus:border-accent outline-none w-full"
+                    aria-invalid={errors.name ? "true" : "false"}
+                    aria-describedby={errors.name ? "contact-name-error" : undefined}
+                    {...register("name", { 
+                      required: "Your Name / Company Name is required",
+                      validate: (val) => val.trim().length > 0 || "Whitespace-only values are not allowed",
+                      minLength: {
+                        value: 2,
+                        message: "Name must be at least 2 characters long"
+                      },
+                      pattern: {
+                        value: /^[a-zA-Z0-9\s.,&'-]+$/,
+                        message: "Please enter a valid name or company name"
+                      }
+                    })}
+                    className={`bg-bg-base border p-3 text-sm focus:border-accent outline-none w-full ${errors.name ? 'border-red-500' : 'border-border-theme'}`}
                     placeholder="Enter full name"
                   />
-                  {errors.name && <span className="text-red-500 text-xs">{errors.name.message}</span>}
+                  {errors.name && <span id="contact-name-error" className="text-red-500 text-xs mt-1">{errors.name.message}</span>}
                 </div>
 
                 {/* Email */}
                 <div className="flex flex-col gap-1">
-                  <label className="text-xs uppercase tracking-widest text-primary font-bold">Email Address</label>
+                  <label htmlFor="contact-email" className="text-xs uppercase tracking-widest text-primary font-bold">Email Address <span className="text-red-500">*</span></label>
                   <input
+                    id="contact-email"
                     type="email"
-                    {...register("email", { required: "Email is required" })}
-                    className="bg-bg-base border border-border-theme p-3 text-sm focus:border-accent outline-none w-full"
-                    placeholder="Enter email"
+                    aria-invalid={errors.email ? "true" : "false"}
+                    aria-describedby={errors.email ? "contact-email-error" : undefined}
+                    {...register("email", { 
+                      required: "Email Address is required",
+                      validate: (val) => val.trim().length > 0 || "Whitespace-only values are not allowed",
+                      pattern: {
+                        value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                        message: "Please enter a valid email address"
+                      }
+                    })}
+                    className={`bg-bg-base border p-3 text-sm focus:border-accent outline-none w-full ${errors.email ? 'border-red-500' : 'border-border-theme'}`}
+                    placeholder="name@company.com"
                   />
-                  {errors.email && <span className="text-red-500 text-xs">{errors.email.message}</span>}
+                  {errors.email && <span id="contact-email-error" className="text-red-500 text-xs mt-1">{errors.email.message}</span>}
                 </div>
               </div>
 
               {/* Subject */}
               <div className="flex flex-col gap-1">
-                <label className="text-xs uppercase tracking-widest text-primary font-bold">Subject</label>
+                <label htmlFor="contact-subject" className="text-xs uppercase tracking-widest text-primary font-bold">Subject <span className="text-red-500">*</span></label>
                 <input
+                  id="contact-subject"
                   type="text"
-                  {...register("subject", { required: "Subject is required" })}
-                  className="bg-bg-base border border-border-theme p-3 text-sm focus:border-accent outline-none w-full"
-                  placeholder="Fabric Inquiry / Bulk Order / Custom Development"
+                  aria-invalid={errors.subject ? "true" : "false"}
+                  aria-describedby={errors.subject ? "contact-subject-error" : undefined}
+                  {...register("subject", { 
+                    required: "Subject is required",
+                    validate: (val) => val.trim().length > 0 || "Whitespace-only values are not allowed"
+                  })}
+                  className={`bg-bg-base border p-3 text-sm focus:border-accent outline-none w-full ${errors.subject ? 'border-red-500' : 'border-border-theme'}`}
+                  placeholder="Fabric Enquiry / Bulk Order / Custom Development"
                 />
-                {errors.subject && <span className="text-red-500 text-xs">{errors.subject.message}</span>}
+                {errors.subject && <span id="contact-subject-error" className="text-red-500 text-xs mt-1">{errors.subject.message}</span>}
               </div>
 
               {/* Message */}
               <div className="flex flex-col gap-1">
-                <label className="text-xs uppercase tracking-widest text-primary font-bold">Message</label>
+                <label htmlFor="contact-message" className="text-xs uppercase tracking-widest text-primary font-bold">Specifications & Order Details <span className="text-red-500">*</span></label>
                 <textarea
+                  id="contact-message"
                   rows="5"
-                  {...register("message", { required: "Message content is required" })}
-                  className="bg-bg-base border border-border-theme p-3 text-sm focus:border-accent outline-none w-full resize-none"
+                  maxLength={1000}
+                  aria-invalid={errors.message ? "true" : "false"}
+                  aria-describedby={errors.message ? "contact-message-error" : undefined}
+                  {...register("message", { 
+                    required: "Specifications & Order Details are required",
+                    validate: (val) => val.trim().length > 0 || "Whitespace-only values are not allowed",
+                    maxLength: {
+                      value: 1000,
+                      message: "Message cannot exceed 1000 characters"
+                    }
+                  })}
+                  className={`bg-bg-base border p-3 text-sm focus:border-accent outline-none w-full resize-none ${errors.message ? 'border-red-500' : 'border-border-theme'}`}
                   placeholder="Specify fabric type, required GSM (40-300 GSM), quantity, or timeline..."
                 />
-                {errors.message && <span className="text-red-500 text-xs">{errors.message.message}</span>}
+                {errors.message && <span id="contact-message-error" className="text-red-500 text-xs mt-1">{errors.message.message}</span>}
               </div>
 
               <button
                 type="submit"
-                className="bg-primary text-bg-base font-bold text-xs uppercase tracking-widest py-4 border border-primary hover:bg-accent hover:text-primary transition-all flex items-center justify-center gap-2 mt-4"
+                disabled={isSubmitting}
+                className="bg-primary text-bg-base font-bold text-xs uppercase tracking-widest py-4 border border-primary hover:bg-accent hover:text-primary transition-all flex items-center justify-center gap-2 mt-4 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Send Message <FiSend />
+                {isSubmitting ? "Sending..." : "Send Message"} <FiSend />
               </button>
             </form>
           </div>

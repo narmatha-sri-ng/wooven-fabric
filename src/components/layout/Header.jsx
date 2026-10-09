@@ -27,8 +27,8 @@ export const Header = () => {
       <header
         className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 border-b ${
           scrolled
-            ? 'bg-bg-base/95 backdrop-blur-md py-4 border-border-theme shadow-sm'
-            : 'bg-transparent py-6 border-transparent'
+            ? 'bg-bg-base/90 backdrop-blur-md py-3 border-border-theme shadow-sm'
+            : 'bg-bg-base/75 backdrop-blur-md py-4 border-border-theme/40'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between w-full">
@@ -40,7 +40,7 @@ export const Header = () => {
             <img
               src="/logo.png"
               alt="Barani Clothings Private Limited Logo"
-              className="h-9 sm:h-10 md:h-12 w-auto object-contain bg-white px-2 py-1 rounded"
+              className="h-10 sm:h-11 md:h-12 w-auto object-contain"
             />
             <div className="flex flex-col text-primary font-serif">
               <span className="text-sm sm:text-base md:text-lg font-bold tracking-widest leading-none">

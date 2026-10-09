@@ -1,6 +1,20 @@
 // Data configuration for Barani Clothings Private Limited Website
 // Woven fabric manufacturing leader established in 1992.
 
+import sizing1 from '../assets/sizing unit/WhatsApp Image 2026-10-09 at 1.18.54 PM.jpeg';
+import sizing2 from '../assets/sizing unit/WhatsApp Image 2026-10-09 at 1.18.54 PM (1).jpeg';
+import sizing3 from '../assets/sizing unit/WhatsApp Image 2026-10-09 at 1.18.55 PM.jpeg';
+import sizing4 from '../assets/sizing unit/WhatsApp Image 2026-10-09 at 1.18.55 PM (1).jpeg';
+
+import weaving1 from '../assets/weaving unit/WhatsApp Image 2026-10-09 at 1.19.40 PM.jpeg';
+import weaving2 from '../assets/weaving unit/WhatsApp Image 2026-10-09 at 1.19.40 PM (1).jpeg';
+import weaving3 from '../assets/weaving unit/WhatsApp Image 2026-10-09 at 1.19.41 PM.jpeg';
+import weaving4 from '../assets/weaving unit/WhatsApp Image 2026-10-09 at 1.19.42 PM.jpeg';
+
+export const sizingUnitImages = [sizing1, sizing2, sizing3, sizing4];
+export const weavingUnitImages = [weaving1, weaving2, weaving3, weaving4];
+
+
 export const navigationLinks = [
   { name: 'Home', path: '/' },
   { name: 'About', path: '/about' },
@@ -216,8 +230,29 @@ export const galleryItems = [
     id: 1,
     category: 'Weaving Unit',
     title: 'Picanol Rapier & Air Jet Looms Shed',
-    image: 'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?q=80&w=800&auto=format&fit=crop',
+    image: weaving1,
     imageName: 'facility-01.jpg'
+  },
+  {
+    id: 10,
+    category: 'Weaving Unit',
+    title: 'High Speed Modern Weaving Production Line',
+    image: weaving2,
+    imageName: 'facility-10.jpg'
+  },
+  {
+    id: 11,
+    category: 'Weaving Unit',
+    title: 'Precision Rapier Weaving Looms Operation',
+    image: weaving3,
+    imageName: 'facility-11.jpg'
+  },
+  {
+    id: 12,
+    category: 'Weaving Unit',
+    title: 'Automated Air Jet Weaving Machinery Shed',
+    image: weaving4,
+    imageName: 'facility-12.jpg'
   },
   {
     id: 2,
@@ -229,9 +264,30 @@ export const galleryItems = [
   {
     id: 3,
     category: 'Sizing Unit',
-    title: 'Prashant LASERTRONIC Warping Machine',
-    image: 'https://images.unsplash.com/photo-1604176354204-9268737828e4?q=80&w=800&auto=format&fit=crop',
+    title: 'Prashant LASERTRONIC & West Point PLC Sizing Unit',
+    image: sizing1,
     imageName: 'facility-03.jpg'
+  },
+  {
+    id: 7,
+    category: 'Sizing Unit',
+    title: 'High Capacity Yarn Preparation & Warping',
+    image: sizing2,
+    imageName: 'facility-07.jpg'
+  },
+  {
+    id: 8,
+    category: 'Sizing Unit',
+    title: 'Advanced PLC Controlled Sizing Line',
+    image: sizing3,
+    imageName: 'facility-08.jpg'
+  },
+  {
+    id: 9,
+    category: 'Sizing Unit',
+    title: 'Beam Preparation & Warp Beam Storage',
+    image: sizing4,
+    imageName: 'facility-09.jpg'
   },
   {
     id: 4,
@@ -263,7 +319,9 @@ export const aboutContent = {
   story: 'Established in 1992, Barani Clothings Private Limited has been a pioneering force in the textile industry, dedicated to delivering high-quality fabric solutions. With a commitment to excellence, we engage in the manufacturing of woven fabrics, supported by in-house facilities for Dyeing, Sizing, and Weaving. Our modernized machinery ensures the highest quality at every step of the production process. Strategically located in Vijayamangalam and Perundurai, our facilities stand as beacons of innovation and efficiency.',
   dyeingUnit: 'Our dyeing division has an in-house capacity of 900 metric tons per year and is equipped with sample dyeing and beaker dyeing machines for precision sample development. Supported by a dedicated dyeing laboratory, we ensure enhanced quality control and exceptional color consistency, with specialization in double dyeing processes. Through collaboration with trusted partner dyeing units, we can scale production to handle up to 1,200 metric tons per year, enabling dependable execution for large-volume requirements.',
   sizingUnit: 'Equipped with modern Prashant LASERTRONIC warping and direct warping machines along with the advanced Prashant-West Point PLC sizing machine, our sizing unit delivers up to 20 lakh meters per month, ensuring superior yarn strength, smooth weaving performance, precision control, and consistent fabric quality.',
+  sizingImages: [sizing1, sizing2, sizing3, sizing4],
   weavingUnit: 'Our weaving facility operates 72 Rapier and Air Jet looms of Picanol make, managed by over 100 skilled professionals in the loom shed. Leveraging a network of affiliated units with more than 150 weaving machines, we ensure scalable production flexibility and dependable bulk-order execution. With a production capacity of 3.75 lakh meters per month, we specialize in premium dobby fabrics and check designs engineered for precision and consistency.',
+  weavingImages: [weaving1, weaving2, weaving3, weaving4],
   qualityAssurance: 'We follow a rigorous 4-point fabric quality inspection system at every weaving center, with mandatory fabric inspection after weaving and finishing. Our fabrics are further tested at standardized testing centers such as SITRA, SGS, and ITS to ensure compliance with international quality benchmarks.\n\nPowered by advanced machinery and an experienced workforce, our fully integrated manufacturing ecosystem ensures exceptional quality control, production efficiency, and timely delivery for every order.'
 };
 

@@ -16,11 +16,6 @@ export const ProductCard = ({ product, onViewDetails }) => {
     >
       {/* Image Container */}
       <div className="relative aspect-[3/4] w-full overflow-hidden bg-bg-alt">
-        {tag && (
-          <span className="absolute top-4 left-4 z-10 bg-primary text-bg-base text-xs font-semibold tracking-widest uppercase px-3 py-1 border border-accent">
-            {tag}
-          </span>
-        )}
         <img
           src={image}
           alt={title}
