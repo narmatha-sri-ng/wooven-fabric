@@ -329,7 +329,7 @@ export const aboutContent = {
 export const contactInfo = {
   phone: '+91 9042712569',
   email: 'bcpl@baranifabrics.com',
-  address: 'BARANI CLOTHINGS PRIVATE LIMITED, 30/20 ST 1, Kunnathur Road Extn, Thiruvengadampalayam Pudur, Thingalur Road, Perundurai, Erode, Tamil Nadu – 638053',
+  address: 'BARANI CLOTHINGS PRIVATE LIMITED, 30/20 ST 1, Kunnathur Road Extn, Thiruvengadampalayam Pudur, Thingalur Road, Perundurai, Erode, Tamil\u00a0Nadu – 638053',
   googleMapsUrl: 'https://maps.app.goo.gl/YMY26bdQ1iHaZNrMA?g_st=aw',
   businessHours: [
     { days: 'Monday - Saturday', hours: '9:00 AM - 6:00 PM' },

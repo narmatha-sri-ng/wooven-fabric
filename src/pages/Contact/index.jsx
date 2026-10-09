@@ -34,7 +34,7 @@ export default function Contact() {
           <div className="lg:col-span-4 flex flex-col gap-8">
             <h2 className="text-2xl font-serif text-primary">Registered Office</h2>
             <p className="text-sm text-primary/70 leading-relaxed font-light">
-              Connect with our management team for fabric inquiries, bulk manufacturing, yarn-dyed requirements, or custom dobby fabric developments.
+              Connect with our management team for fabric enquiries, bulk manufacturing, yarn-dyed requirements, or custom dobby fabric developments.
             </p>
 
             <div className="flex flex-col gap-6 text-sm">
@@ -213,7 +213,7 @@ export default function Contact() {
             <FiMapPin className="text-accent text-4xl mx-auto mb-4" />
             <h3 className="font-serif text-2xl text-primary font-bold">Facility Location</h3>
             <p className="text-xs text-primary/70 uppercase tracking-widest mt-2 leading-relaxed">
-              Perundurai & Vijayamangalam, Erode, Tamil Nadu – 638053
+              Perundurai & Vijayamangalam, Erode, Tamil&nbsp;Nadu – 638053
             </p>
             <a
               href={contactInfo.googleMapsUrl}
